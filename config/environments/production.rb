@@ -57,7 +57,7 @@ Rails.application.configure do
   config.log_tags = [ :request_id ]
 
   # Use a different cache store in production.
-  config.cache_store = :redis_store, { cluster: [ENV["REDISTOGO_URL"]] }, {
+  config.cache_store = :redis_store, ENV["REDISTOGO_URL"], {
       expires_in: 1.hour,
       namespace: 'cache',
   }
