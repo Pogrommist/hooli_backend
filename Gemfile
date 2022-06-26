@@ -40,7 +40,6 @@ gem 'devise-jwt'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'binance-connector-ruby', git: 'https://github.com/Pogrommist/binance-connector-ruby.git'
 gem 'redis-rails'
-gem 'connection_pool'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

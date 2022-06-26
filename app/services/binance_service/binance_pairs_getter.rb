@@ -47,7 +47,7 @@ module BinanceService
     end
 
     def available_symbols
-      symbols =  Rails.cache.fetch('binance_available_symbols', expires_in: 86400) do
+      symbols = Rails.cache.fetch('binance_available_symbols', expires_in: 86400) do
         client.exchange_info.try(:[], :symbols)
       end
       symbols
