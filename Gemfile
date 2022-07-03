@@ -42,6 +42,7 @@ gem 'binance-connector-ruby', git: 'https://github.com/Pogrommist/binance-connec
 gem 'redis-rails'
 gem "sentry-ruby"
 gem "sentry-rails"
+gem 'cloudinary'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
