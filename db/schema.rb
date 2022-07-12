@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_03_185803) do
+ActiveRecord::Schema.define(version: 2022_07_12_151613) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,22 @@ ActiveRecord::Schema.define(version: 2022_07_03_185803) do
     t.string "jti", null: false
     t.datetime "exp", null: false
     t.index ["jti"], name: "index_jwt_denylist_on_jti"
+  end
+
+  create_table "trading_strategies", force: :cascade do |t|
+    t.bigint "user_id"
+    t.boolean "is_running", default: false
+    t.string "name"
+    t.boolean "is_public", default: false
+    t.string "integration_with"
+    t.float "daily_limit", default: 0.0
+    t.float "strategy_limit", default: 0.0
+    t.string "strategy_currency"
+    t.string "strategy_token_in"
+    t.string "strategy_token_out"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_trading_strategies_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
