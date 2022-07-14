@@ -26,7 +26,7 @@ class TradingStrategiesController < ApplicationController
   end
 
   def destroy
-    @trading_strategy = current_user.trading_strategies.find_by(id: params[:id])
+    @trading_strategy = current_user.trading_strategies.find_by(id: params[:id])&.destroy
 
     render json: @trading_strategy
   end
