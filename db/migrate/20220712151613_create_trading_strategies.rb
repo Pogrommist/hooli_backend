@@ -11,6 +11,7 @@ class CreateTradingStrategies < ActiveRecord::Migration[5.2]
       t.string :strategy_currency
       t.string :strategy_token_in
       t.string :strategy_token_out
+      t.references :user
 
       t.timestamps
     end
