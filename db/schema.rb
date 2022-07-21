@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_12_151613) do
+ActiveRecord::Schema.define(version: 2022_07_19_160623) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "base_trading_strategies_step_items", force: :cascade do |t|
+    t.string "strategy_item_type"
+    t.bigint "strategy_item_id"
+    t.bigint "trading_strategy_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["strategy_item_type", "strategy_item_id"], name: "index_strategy_item_on_id_and_type"
+    t.index ["trading_strategy_id"], name: "index_base_trading_strategies_step_items_on_trading_strategy_id"
+  end
 
   create_table "jwt_denylist", force: :cascade do |t|
     t.string "jti", null: false
@@ -35,6 +45,18 @@ ActiveRecord::Schema.define(version: 2022_07_12_151613) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_trading_strategies_on_user_id"
+  end
+
+  create_table "trading_strategies_step_buys", force: :cascade do |t|
+    t.integer "step_index", null: false
+    t.string "step_type"
+    t.float "step_limit", default: 0.0
+    t.float "step_limit_percent", default: 0.0
+    t.integer "status", null: false
+    t.string "step_name"
+    t.string "step_description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
