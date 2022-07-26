@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 	def update_user_info
 		current_user.update(params_user)
 
-		render json:  current_user
+		render json: current_user
 	end
 
 	private
