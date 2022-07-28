@@ -4,7 +4,7 @@ class TradingStrategiesController < ApplicationController
   def index 
     @trading_strategy = current_user.trading_strategies
 
-    render json: @trading_strategy, each_serializer: TradingStrategySerializer
+    render json: @trading_strategy
   end
 
   def create
@@ -16,7 +16,7 @@ class TradingStrategiesController < ApplicationController
   def show 
     @trading_strategy = current_user.trading_strategies.find_by(id: params[:id])
 
-    render json: @trading_strategy, serializer: TradingStrategySerializer
+    render json: @trading_strategy
   end
 
   def update
