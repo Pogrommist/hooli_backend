@@ -13,10 +13,8 @@ class BaseTradingStrategiesStepItemsController < ApplicationController
   
   def show
     strategy = current_user.trading_strategies.find_by(id: params[:strategy_id])
-    step_service = StrategyService::StrategyStepsService::StrategyStepGetter.new(strategy, params)
-    step_model = step_service.get_step_object
-    step_params = step_service.permit_step_params
-    step = step_model
+    step_model = StrategyService::StrategyStepsService::StrategyStepGetter.new(strategy, params).get_step_object
+    step = step_model&.find_by(id: params[:step_id])
 
     render json: step || {}
   end
@@ -33,10 +31,8 @@ class BaseTradingStrategiesStepItemsController < ApplicationController
 
   def destroy
     strategy = current_user.trading_strategies.find_by(id: params[:strategy_id])
-    step_service = StrategyService::StrategyStepsService::StrategyStepGetter.new(strategy, params)
-    step_model = step_service.get_step_object
-    step_params = step_service.permit_step_params
-    step = step_model&.destroy(step_params)
+    step_model = StrategyService::StrategyStepsService::StrategyStepGetter.new(strategy, params).get_step_object
+    step = step_model&.find_by(id: params[:step_id])&.destroy
 
     render json: step || {}
   end
