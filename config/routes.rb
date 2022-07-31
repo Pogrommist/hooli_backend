@@ -15,4 +15,8 @@ Rails.application.routes.draw do
   end
 
   resources :trading_strategies, only: [:index, :create, :show, :update, :destroy]
+
+  resources :base_trading_strategies_step_items, only: [:create, :show, :update, :destroy]
+
+  resources :trading_strategies_steps_buys, only: [:create, :show, :update, :destroy]
 end
